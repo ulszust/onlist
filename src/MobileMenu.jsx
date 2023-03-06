@@ -7,7 +7,7 @@ function MobileMenu() {
 <div className="flex justify-center absolute text-center w-full bottom-0 mb-4 z-50">
             <ul className="menu menu-horizontal bg-base-100 rounded-box border-2 rounded-lg border-primary grid-cols-3 gap-4 w-fit">
                 <li>
-                    <a>
+                    <a href={'/'}>
                         <HomeIcon className="h-5 w-5" fill="none" viewBox="0 0 24 24"
                              stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
@@ -16,7 +16,7 @@ function MobileMenu() {
                     </a>
                 </li>
                 <li>
-                    <a>
+                    <a href={'/search'}>
                         <MagnifyingGlassIcon className="h-5 w-5" fill="none" viewBox="0 0 24 24"
                              stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
@@ -25,7 +25,7 @@ function MobileMenu() {
                     </a>
                 </li>
                 <li>
-                    <a>
+                    <a href={'/add'}>
                         <PlusIcon className="h-5 w-5" fill="none" viewBox="0 0 24 24"
                              stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
