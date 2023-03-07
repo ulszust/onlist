@@ -1,17 +1,29 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
+import { getList } from "./list-service";
 
 function Home() {
-    return (
-        <>
-            <div className="flex flex-col w-full mt-6">
-                <div className=" mx-7 lg:mx-20 grid h-16 card bg-base-300 rounded-box place-items-center">moja lista</div>
-                <div className="divider"></div>
-                <div className=" mx-7 lg:mx-20 grid h-16 card bg-base-300 rounded-box place-items-center">moja lista2</div>
-                <div className="divider"></div>
-                <div className=" mx-7 lg:mx-20 grid h-16 card bg-base-300 rounded-box place-items-center">moja lista3</div>
-            </div>
-        </>
-    )
+  const [lists, setLists] = useState([]);
+
+  useEffect(() => {
+    setLists(getList());
+  }, []);
+
+  return (
+    <>
+      <div className="flex flex-col w-full mt-6">
+        {lists.map((list) => {
+          return (
+            <>
+              <div className=" mx-7 lg:mx-20 grid h-16 card bg-base-300 rounded-box place-items-center">
+                {list.name}
+              </div>
+              <div className="divider"></div>
+            </>
+          );
+        })}
+      </div>
+    </>
+  );
 }
 
 export default Home;

@@ -9,6 +9,7 @@ import {
     Routes,
     Route,
 } from 'react-router-dom';
+import AddList from "./AddList";
 function App() {
     return (
         <>
@@ -17,8 +18,9 @@ function App() {
             <Router>
                 <Routes>
                     <Route element={<Home/>} exact path="/"/>
-                    <Route element={<NewList/>} path="/add"/>
+                    <Route element={<AddList/>} path="/add"/>
                     <Route element={<Search/>} path="/search"/>
+                    <Route element={<NewList/>} path="/add/newlist"/>
                 </Routes>
             </Router>
 

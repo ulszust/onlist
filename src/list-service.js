@@ -1,7 +1,10 @@
-const data = [{name: "moja lista 1", items: [{product: 'jabłko', quantity: "1"}, {"product": 'mleko', quantity: '500ml'}]}]
+const data = [{name: "moja lista 1", items: [{product: 'jabłko', quantity: "1"}, {product: 'mleko', quantity: '500ml'}]}, {name: "moja lista 2", items: [{product: "chleb", quantity: "2"}, {product: "parówki", quantity: "3"}]}]
 
 
 export function getList(name) {
+    if (!name) {
+        return [...data]
+    }
     return data.find(it => it.name === name)
 }
 export function addNewList(name) {
