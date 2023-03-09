@@ -1,19 +1,19 @@
 import React, { useState } from "react";
-import NewList from "./NewList";
+import AddProducts from "./AddProducts";
 import { useNavigate } from "react-router-dom";
 import { addNewList } from "./list-service";
 
 function AddList() {
   const [name, setName] = useState("");
 
-  let navigate = useNavigate();
+  const navigate = useNavigate();
 
   const addList = () => {
     addNewList(name);
     routeChange();
   };
   const routeChange = () => {
-    let path = `newlist`;
+    const path = `products`;
     navigate(path);
   };
   return (
