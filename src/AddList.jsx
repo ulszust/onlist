@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import AddProducts from "./AddProducts";
 import { useNavigate } from "react-router-dom";
 import { addNewList } from "./list-service";
 
@@ -10,10 +9,10 @@ function AddList() {
 
   const addList = () => {
     addNewList(name);
-    routeChange();
+    goToAddProducts();
   };
-  const routeChange = () => {
-    const path = `products`;
+  const goToAddProducts = () => {
+    const path = `${name}/add-products`;
     navigate(path);
   };
   return (

@@ -17,10 +17,10 @@ function App() {
       <Router>
         <Routes>
           <Route element={<Home />} exact path="/" />
-          <Route element={<AddList />} path="/add" />
+          <Route element={<AddList />} path="/list" />
           <Route element={<Search />} path="/search" />
-          <Route element={<AddProducts />} path="/add/products" />
-          <Route element={<ListView />} path="/list/:id"></Route>
+          <Route element={<AddProducts />} path="/list/:name/add-products" />
+          <Route element={<ListView />} path="/list/:id" />
         </Routes>
       </Router>
     </>
