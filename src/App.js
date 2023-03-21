@@ -1,24 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
-
+import "./App.css";
+import MobileMenu from "./MobileMenu";
+import Navbar from "./Navbar";
+import Home from "./Home";
+import AddProducts from "./AddProducts";
+import Search from "./Search";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import AddList from "./AddList";
+import ListView from "./ListView";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Navbar />
+      <div className={"sm:hidden"}>
+        <MobileMenu></MobileMenu>
+      </div>
+      <Router>
+        <Routes>
+          <Route element={<Home />} exact path="/" />
+          <Route element={<AddList />} path="/list" />
+          <Route element={<Search />} path="/search" />
+          <Route element={<AddProducts />} path="/list/:name/add-products" />
+          <Route element={<ListView />} path="/list/:id" />
+        </Routes>
+      </Router>
+    </>
   );
 }
 
