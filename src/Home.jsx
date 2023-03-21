@@ -18,7 +18,7 @@ function Home() {
 
   return (
     <>
-      <div className="  flex flex-col w-full mt-6">
+      <div className="flex flex-col w-full mt-6">
         {lists.map((list) => {
           return (
             <>
