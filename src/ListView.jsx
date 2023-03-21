@@ -3,10 +3,10 @@ import { useParams } from "react-router-dom";
 import { addBoughtItem, getList } from "./list-service";
 import {
   PencilIcon,
-  PlusCircleIcon,
   TrashIcon,
   CheckCircleIcon,
-} from "@heroicons/react/24/solid";
+} from "@heroicons/react/20/solid";
+import { PlusCircleIcon } from "@heroicons/react/24/solid";
 
 function ListView() {
   const { id } = useParams();
@@ -27,104 +27,73 @@ function ListView() {
   return (
     <>
       {loading || (
-        <div className="flex flex-col w-full">
-          <div className="font-semibold mx-7 w-80 lg:mx-20 grid h-10 place-items-center">
+        <div>
+          <div className="uppercase font-semibold mx-7 mb-2 w-80 lg:mx-20 grid h-10 place-items-center">
             {id}
           </div>
-          <div className="overflow-x-auto w-full">
-            <div className="flex justify-between">
-              <div className="font-semibold px-2 py-4">Do kupienia</div>
-              <PlusCircleIcon className="w-14 h-14 mr-12"></PlusCircleIcon>
+          <div>
+            <div className="flex flex-row bg-error/50">
+              <span className="uppercase text-white font-semibold px-2 py-4">
+                Do kupienia
+              </span>
+              <div className="btn btn-ghost">
+                <PlusCircleIcon className="w-12 h-14 mr-4 mb-2" />
+              </div>
             </div>
-            <table className="table w-full ">
-              <thead></thead>
-              <tbody>
-                {list.items.map((it) => (
-                  <tr>
-                    <th>
-                      <div className=" w-8 h-8 btn btn-ghost btn-circle  ">
-                        <CheckCircleIcon
-                          className="  fill-none  stroke-current"
-                          onClick={() => boughtProduct(it)}
-                        />
-                      </div>
-                    </th>
-                    <td>
-                      <div className="flex items-center space-x-3">
-                        <div>
-                          <div>{it.product}</div>
-                        </div>
-                      </div>
-                    </td>
-                    <td>
-                      {it.quantity}
-                      <br />
-                    </td>
-                    <td>
-                      <div className="btn btn-ghost btn-circle">
-                        <PencilIcon
-                          fill="none"
-                          stroke="currentColor "
-                          className=" w-6 h-10 "
-                        />
-                      </div>
-                    </td>
-                    <td>
-                      <div className="btn btn-ghost btn-circle">
-                        <TrashIcon
-                          fill="none"
-                          stroke="currentColor "
-                          className=" w-6 h-10 "
-                        />
-                      </div>
-                    </td>
-                  </tr>
+            <div className="flex flex-col">
+              {list.items
+                .map((it) => ({ ...it, clicked: false }))
+                .map((it) => (
+                  <div className="flex flex-row space-x-4">
+                    <div className="btn btn-ghost btn-circle">
+                      <CheckCircleIcon
+                        className="w-8 h-8 fill-none stroke-current"
+                        onClick={() => boughtProduct(it)}
+                      />
+                    </div>
+                    <div className="w-full mt-3">{it.product}</div>
+                    <div className="w-full mt-3">{it.quantity}</div>
+                    <div className="btn btn-ghost btn-circle">
+                      <PencilIcon
+                        fill="none"
+                        stroke="currentColor "
+                        className="w-6 h-10"
+                      />
+                    </div>
+                    <div className="btn btn-ghost btn-circle">
+                      <TrashIcon
+                        fill="none"
+                        stroke="currentColor "
+                        className=" w-6 h-10"
+                      />
+                    </div>
+                  </div>
                 ))}
-              </tbody>
-            </table>
+            </div>
           </div>
-          <div className="overflow-x-auto w-full">
+          <br />
+          <div>
             <div>
-              <div className="px-2 py-4 font-semibold">Kupione</div>
+              <div className="uppercase text-white px-2 py-4 font-semibold bg-success/70">
+                Kupione
+              </div>
             </div>
-            <table className="table w-full ">
-              <thead></thead>
-              <tbody>
-                {list.boughtItems.map((it) => (
-                  <tr>
-                    <td>
-                      <div className="flex items-center space-x-3">
-                        <div>
-                          <div>{it.product}</div>
-                        </div>
-                      </div>
-                    </td>
-                    <td>
-                      {it.quantity}
-                      <br />
-                    </td>
-                    <td>
-                      <div className="btn btn-ghost btn-circle">
-                        <PencilIcon
-                          fill="none"
-                          stroke="currentColor "
-                          className=" w-6 h-10 "
-                        />
-                      </div>
-                    </td>
-                    <td>
-                      <div className="btn btn-ghost btn-circle">
-                        <TrashIcon
-                          fill="none"
-                          stroke="currentColor "
-                          className=" w-6 h-10 "
-                        />
-                      </div>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+            <div className="flex flex-col">
+              {list.boughtItems.map((it) => (
+                <div className="flex flex-row space-x-4">
+                  <div className="w-full mt-3 ml-3">{it.product}</div>
+                  <div className="w-full mt-3">{it.quantity}</div>
+                  <div></div>
+                  <div className="btn btn-ghost btn-circle">
+                    <TrashIcon
+                      fill="none"
+                      stroke="currentColor "
+                      className=" w-6 h-10 "
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       )}
