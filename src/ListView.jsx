@@ -19,12 +19,17 @@ function ListView() {
   const [loading, setLoading] = useState(true);
   const [counter, setCounter] = useState(0);
   const navigate = useNavigate();
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     setLoading(true);
     setList(getList(id));
     setLoading(false);
   }, [id, counter]);
+
+  const handleShow = () => {
+    setShowModal(true);
+  };
 
   const boughtProduct = ({ product }) => {
     addBoughtItem(id, product);
@@ -78,13 +83,54 @@ function ListView() {
                     </div>
                     <div className="w-full mt-3">{it.product}</div>
                     <div className="w-full mt-3">{it.quantity}</div>
-                    <div className="btn btn-ghost btn-circle">
+                    <label
+                      htmlFor="edit-modal"
+                      className="btn btn-ghost btn-circle"
+                    >
                       <PencilIcon
                         fill="none"
                         stroke="currentColor "
                         className="w-6 h-10"
+                        onClick={() => handleShow}
                       />
+                    </label>
+                    <input
+                      type="checkbox"
+                      id="edit-modal"
+                      className="modal-toggle"
+                    />
+                    <div className="modal !ml-0">
+                      <div className="modal-box">
+                        <div className="flex flex-row space-x-3 ">
+                          <div className="flex flex-col space-y-6">
+                            <div>Produkt</div>
+                            <div>Ilość</div>
+                          </div>
+                          <div className="flex flex-col space-y-6">
+                            <div>
+                              <input
+                                type="text"
+                                placeholder={it.product}
+                                className="input input-bordered w-full max-w-xs"
+                              />
+                            </div>
+                            <div>
+                              <input
+                                type="text"
+                                placeholder={it.quantity}
+                                className="input input-bordered w-full max-w-xs"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                        <div className="modal-action">
+                          <label htmlFor="edit-modal" className="btn">
+                            Zapisz
+                          </label>
+                        </div>
+                      </div>
                     </div>
+
                     <div className="btn btn-ghost btn-circle">
                       <TrashIcon
                         fill="none"
