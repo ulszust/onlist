@@ -28,17 +28,17 @@ function ListView() {
     <>
       {loading || (
         <div>
-          <div className="uppercase font-semibold mx-7 mb-2 w-80 lg:mx-20 grid h-10 place-items-center">
-            {id}
+          <div className="uppercase font-semibold mx-7 mb-2 lg:mx-20 flex flex-row justify-center">
+            <div className="mt-4 ml-8"> {id}</div>
+            <div className="btn btn-ghost">
+              <PlusCircleIcon className="w-12 h-14 mb-2" />
+            </div>
           </div>
           <div>
-            <div className="flex flex-row bg-error/50">
+            <div className="flex flex-row bg-base-300">
               <span className="uppercase text-white font-semibold px-2 py-4">
                 Do kupienia
               </span>
-              <div className="btn btn-ghost">
-                <PlusCircleIcon className="w-12 h-14 mr-4 mb-2" />
-              </div>
             </div>
             <div className="flex flex-col">
               {list.items
@@ -74,7 +74,7 @@ function ListView() {
           <br />
           <div>
             <div>
-              <div className="uppercase text-white px-2 py-4 font-semibold bg-success/70">
+              <div className="uppercase text-white px-2 py-4 font-semibold bg-base-300">
                 Kupione
               </div>
             </div>
