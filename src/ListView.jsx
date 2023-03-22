@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { addBoughtItem, getList } from "./list-service";
 import {
   PencilIcon,
@@ -13,6 +13,7 @@ function ListView() {
   const [list, setList] = useState([]);
   const [loading, setLoading] = useState(true);
   const [counter, setCounter] = useState(0);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setLoading(true);
@@ -24,6 +25,11 @@ function ListView() {
     addBoughtItem(id, product);
     setCounter(counter + 1);
   };
+
+  const onAddNewProductClick = () => {
+    const path = `add-products`;
+    navigate(path);
+  };
   return (
     <>
       {loading || (
@@ -31,7 +37,10 @@ function ListView() {
           <div className="uppercase font-semibold mx-7 mb-2 lg:mx-20 flex flex-row justify-center">
             <div className="mt-4 ml-8"> {id}</div>
             <div className="btn btn-ghost">
-              <PlusCircleIcon className="w-12 h-14 mb-2" />
+              <PlusCircleIcon
+                className="w-12 h-14 mb-2"
+                onClick={onAddNewProductClick}
+              />
             </div>
           </div>
           <div>
