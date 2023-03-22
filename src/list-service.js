@@ -76,3 +76,11 @@ export function addBoughtItem(name, product) {
   currentList.boughtItems.push(boughtItem);
   currentList.items.splice(boughtItemIndex, 1);
 }
+
+export function removeBoughtItem(name, product) {
+  const currentList = data.find((it) => it.name === name);
+  const deleteBoughtItemIndex = currentList.boughtItems.findIndex(
+    (it) => it.product === product
+  );
+  currentList.boughtItems.splice(deleteBoughtItemIndex, 1);
+}

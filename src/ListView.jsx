@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { addBoughtItem, getList } from "./list-service";
+import {
+  addBoughtItem,
+  getList,
+  removeBoughtItem,
+  removeListItem,
+} from "./list-service";
 import {
   PencilIcon,
   TrashIcon,
@@ -30,6 +35,17 @@ function ListView() {
     const path = `add-products`;
     navigate(path);
   };
+
+  const onDeleteProductClick = ({ product }) => {
+    removeListItem(id, product);
+    setCounter(counter + 1);
+  };
+
+  const onDeleteBoughtProductClick = ({ product }) => {
+    removeBoughtItem(id, product);
+    setCounter(counter + 1);
+  };
+
   return (
     <>
       {loading || (
@@ -74,6 +90,7 @@ function ListView() {
                         fill="none"
                         stroke="currentColor "
                         className=" w-6 h-10"
+                        onClick={() => onDeleteProductClick(it)}
                       />
                     </div>
                   </div>
@@ -98,6 +115,7 @@ function ListView() {
                       fill="none"
                       stroke="currentColor "
                       className=" w-6 h-10 "
+                      onClick={() => onDeleteBoughtProductClick(it)}
                     />
                   </div>
                 </div>
