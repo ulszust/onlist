@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import {
   addBoughtItem,
+  editListItem,
   getList,
   removeBoughtItem,
   removeListItem,
@@ -19,7 +20,8 @@ function ListView() {
   const [loading, setLoading] = useState(true);
   const [counter, setCounter] = useState(0);
   const navigate = useNavigate();
-  const [showModal, setShowModal] = useState(false);
+  const [modalData, setModalData] = useState({});
+  const [updatedProduct, setUpdatedProduct] = useState(null);
 
   useEffect(() => {
     setLoading(true);
@@ -27,8 +29,8 @@ function ListView() {
     setLoading(false);
   }, [id, counter]);
 
-  const handleShow = () => {
-    setShowModal(true);
+  const handleShow = (item) => {
+    setModalData(item);
   };
 
   const boughtProduct = ({ product }) => {
@@ -91,7 +93,7 @@ function ListView() {
                         fill="none"
                         stroke="currentColor "
                         className="w-6 h-10"
-                        onClick={() => handleShow}
+                        onClick={() => handleShow(it)}
                       />
                     </label>
                     <input
@@ -102,22 +104,22 @@ function ListView() {
                     <div className="modal !ml-0">
                       <div className="modal-box">
                         <div className="flex flex-row space-x-3 ">
-                          <div className="flex flex-col space-y-6">
-                            <div>Produkt</div>
-                            <div>Ilość</div>
+                          <div className="flex flex-col space-y-12">
+                            <div className="mt-3 uppercase">Produkt</div>
+                            <div className="ml-6 uppercase">Ilość</div>
                           </div>
                           <div className="flex flex-col space-y-6">
                             <div>
                               <input
                                 type="text"
-                                placeholder={it.product}
+                                value={modalData.product}
                                 className="input input-bordered w-full max-w-xs"
                               />
                             </div>
                             <div>
                               <input
                                 type="text"
-                                placeholder={it.quantity}
+                                value={modalData.quantity}
                                 className="input input-bordered w-full max-w-xs"
                               />
                             </div>
