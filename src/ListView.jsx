@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import {
   addBoughtItem,
@@ -22,6 +22,12 @@ function ListView() {
   const navigate = useNavigate();
   const [modalData, setModalData] = useState({});
   const [updatedProduct, setUpdatedProduct] = useState(null);
+  const [active, setActive] = useState(false);
+
+  const handleClick = () => {
+    setActive(!active);
+  };
+  console.log(id);
 
   useEffect(() => {
     setLoading(true);
@@ -34,8 +40,10 @@ function ListView() {
   };
 
   const boughtProduct = ({ product }) => {
-    addBoughtItem(id, product);
-    setCounter(counter + 1);
+    setTimeout(() => {
+      addBoughtItem(id, product);
+      setCounter(counter + 1);
+    }, 1000);
   };
 
   const onAddNewProductClick = () => {
@@ -77,12 +85,15 @@ function ListView() {
                 .map((it) => ({ ...it, clicked: false }))
                 .map((it) => (
                   <div className="flex flex-row space-x-4">
-                    <div className="btn btn-ghost btn-circle">
+                    <button
+                      className="cursor-pointer active:text-white"
+                      onClick={handleClick}
+                    >
                       <CheckCircleIcon
-                        className="w-8 h-8 fill-none stroke-current"
+                        className="w-8 h-8 fill-none stroke-current "
                         onClick={() => boughtProduct(it)}
                       />
-                    </div>
+                    </button>
                     <div className="w-full mt-3">{it.product}</div>
                     <div className="w-full mt-3">{it.quantity}</div>
                     <label
@@ -155,6 +166,9 @@ function ListView() {
             <div className="flex flex-col">
               {list.boughtItems.map((it) => (
                 <div className="flex flex-row space-x-4">
+                  <div>
+                    <CheckCircleIcon className="mt-2 w-8 h-8 stroke-current " />
+                  </div>
                   <div className="w-full mt-3 ml-3">{it.product}</div>
                   <div className="w-full mt-3">{it.quantity}</div>
                   <div></div>
