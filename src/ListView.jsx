@@ -27,7 +27,6 @@ function ListView() {
   const handleClick = () => {
     setActive(!active);
   };
-  console.log(id);
 
   useEffect(() => {
     setLoading(true);
