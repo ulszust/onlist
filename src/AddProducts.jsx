@@ -28,6 +28,13 @@ function AddProducts() {
     document.getElementById("quantity").value = "";
   }
 
+  const isFound = () => {
+    if (list.items.length > 0) {
+      return true;
+    }
+    return false;
+  };
+
   return (
     <>
       {loading || (
@@ -55,7 +62,7 @@ function AddProducts() {
                   </div>
                   <button
                     onClick={addProduct}
-                    className="btn bg-neutral/60 cursor-pointer mt-4 w-20 place-self-center text-white"
+                    className="btn btn-primary cursor-pointer mt-4 w-20 place-self-center"
                   >
                     Dodaj
                   </button>
@@ -69,15 +76,21 @@ function AddProducts() {
             </div>
           </div>
           <div className="flex flex-col">
-            {list.items.map((it) => (
-              <div className="flex flex-row space-x-3">
-                <div>
-                  <CheckIcon className="mt-4 w-7 h-5" />
-                </div>
-                <div className=" mt-3">{it.product}</div>
-                <div className="mt-3">{it.quantity}</div>
-              </div>
-            ))}
+            {isFound(true) ? (
+              <>
+                {list.items.map((it) => (
+                  <div className="flex flex-row space-x-3">
+                    <div>
+                      <CheckIcon className="mt-4 w-7 h-5" />
+                    </div>
+                    <div className=" mt-3">{it.product}</div>
+                    <div className="mt-3">{it.quantity}</div>
+                  </div>
+                ))}
+              </>
+            ) : (
+              <div>brak produktów</div>
+            )}
           </div>
         </>
       )}
@@ -85,4 +98,5 @@ function AddProducts() {
     </>
   );
 }
+
 export default AddProducts;
