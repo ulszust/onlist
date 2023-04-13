@@ -43,7 +43,7 @@ function AddProducts() {
             <div className="card-body items-center text-center">
               <div className="flex flex-col">
                 <div className="form-control">
-                  <div className="flex flex-col gap-y-3">
+                  <div className="flex flex-col gap-y-3 pb-2">
                     <input
                       type="text"
                       id="product"
@@ -89,7 +89,9 @@ function AddProducts() {
                 ))}
               </>
             ) : (
-              <div>brak produktów</div>
+              <div className="place-self-center mt-10 font-bold">
+                Brak produktów
+              </div>
             )}
           </div>
         </>
