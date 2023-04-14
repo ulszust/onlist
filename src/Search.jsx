@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
 import { findListByNameOrProduct, getAllLists } from "./list-service";
+import { useNavigate } from "react-router-dom";
 function Search() {
   const [query, setQuery] = useState("");
-  const [allLists, setAllLists] = useState([]);
   const [matchedLists, setMatchedLists] = useState([]);
 
-  useEffect(() => {
-    setAllLists(getAllLists());
-  }, []);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!query) {
@@ -18,7 +16,10 @@ function Search() {
     }
   }, [query]);
 
-  console.log(allLists);
+  const goToList = (name) => {
+    const path = `/list/${name}`;
+    navigate(path);
+  };
 
   return (
     <>
@@ -40,9 +41,16 @@ function Search() {
       <div>
         {matchedLists.map((list) => {
           return (
-            <div>
-              <div>{list.name}</div>
-              <div>{list.items.map((item) => item.product).join(", ")}</div>
+            <div className=" mx-3 border-2 border-success/50 rounded-lg mt-7">
+              <div
+                onClick={() => goToList(list.name)}
+                className="pl-3 bg-success/80 font-bold text-white/70"
+              >
+                {list.name}
+              </div>
+              <div className="pb-1 pl-3 bg-success/80 text-neutral">
+                {list.items.map((item) => item.product).join(", ")}
+              </div>
             </div>
           );
         })}
