@@ -76,3 +76,23 @@ export function addBoughtItem(name, product) {
   currentList.boughtItems.push(boughtItem);
   currentList.items.splice(boughtItemIndex, 1);
 }
+
+export function removeBoughtItem(name, product) {
+  const currentList = data.find((it) => it.name === name);
+  const deleteBoughtItemIndex = currentList.boughtItems.findIndex(
+    (it) => it.product === product
+  );
+  currentList.boughtItems.splice(deleteBoughtItemIndex, 1);
+}
+
+export function getAllLists() {
+  return data;
+}
+
+export function findListByNameOrProduct(query) {
+  const listsByName = data.filter((list) => list.name?.includes(query));
+  const listsByProduct = data.filter((list) =>
+    list.items.find((item) => item.product?.includes(query))
+  );
+  return [...new Set(listsByName.concat(listsByProduct))];
+}

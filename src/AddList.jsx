@@ -17,7 +17,7 @@ function AddList() {
   };
   return (
     <>
-      <div className="card w-96 bg-base-100 shadow-xl">
+      <div className="card card w-50 mt-52 mx-3 mb-2 pt-3 pb-3 bg-neutral/50 shadow-xl">
         <div className="card-body items-center text-center">
           <input
             onChange={(e) => setName(e.target.value)}
@@ -25,7 +25,7 @@ function AddList() {
             placeholder="Nazwa listy..."
             className="input input-bordered w-full max-w-xs"
           />
-          <div className="card-actions">
+          <div className=" mt-3 pt-2 card-actions">
             <button onClick={addList} className="btn btn-primary">
               Zapisz
             </button>
