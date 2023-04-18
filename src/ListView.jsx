@@ -64,46 +64,56 @@ function ListView() {
     <>
       {loading || (
         <div>
-          <div className="uppercase font-semibold mx-7 mb-2 lg:mx-20 flex flex-row justify-center">
-            <div className="mt-4 ml-8"> {id}</div>
-            <div className="btn btn-ghost">
+          <div className="uppercase font-semibold lg:font-extrabold mx-7 lg:mx-20 mb-2 lg:mb-10 lg:pb-1 lg:mt-5 lg:pt-1 lg:text-2xl lg:ml-96 lg:mr-96 lg:rounded-full lg:border-4 lg:border-primary/10 lg:shadow-2xl flex flex-row justify-center">
+            <div className="mt-4 ml-8 lg:px-3"> {id}</div>
+            <div
+              className="rounded-full lg:hover:rounded-lg lg:cursor-pointer lg:hover:bg-primary/20 lg:ml-3"
+              title="Dodaj produkty"
+            >
               <PlusCircleIcon
-                className="w-12 h-14 mb-2"
+                className="w-12 lg:w-14 h-14 ml-2"
                 onClick={onAddNewProductClick}
+                title="Dodaj produkty"
               />
             </div>
           </div>
-          <div>
-            <div className="flex flex-row bg-base-300">
-              <span className="uppercase text-white font-semibold px-2 py-4">
+          <div className="lg:ml-80 lg:mr-80 lg:border-t-4 lg:border-r-4 lg:border-l-4 lg:rounded-t-xl lg:shadow-2xl lg:border-primary/10">
+            <div className="flex flex-row bg-base-300 lg:rounded-t-xl">
+              <div className="uppercase font-semibold lg:font-bold lg:text-xl px-2 py-4 lg:pl-9 lg:mb-1">
                 Do kupienia
-              </span>
+              </div>
             </div>
-            <div className="flex flex-col">
+            <div className="flex flex-col lg:pb-3">
               {list.items
                 .map((it) => ({ ...it, clicked: false }))
                 .map((it) => (
-                  <div className="flex flex-row space-x-4">
+                  <div className="flex flex-row lg:flex-none space-x-4">
                     <button
-                      className="cursor-pointer active:text-white"
+                      className="lg:ml-8 cursor-pointer active:text-white"
                       onClick={handleClick}
                     >
                       <CheckCircleIcon
                         className="w-8 h-8 fill-none stroke-current "
                         onClick={() => boughtProduct(it)}
+                        title="Kupione"
                       />
                     </button>
-                    <div className="w-full mt-3">{it.product}</div>
-                    <div className="w-full mt-3">{it.quantity}</div>
+                    <div className="lg:flex-initial w-full lg:w-60 mt-3 lg:text-lg">
+                      {it.product}
+                    </div>
+                    <div className="lg:flex-initial w-full lg:w-40 mt-3 lg:text-lg">
+                      {it.quantity}
+                    </div>
                     <label
                       htmlFor="edit-modal"
-                      className="btn btn-ghost btn-circle"
+                      className="btn btn-ghost btn-circle lg:flex-initial lg:w-30"
                     >
                       <PencilIcon
                         fill="none"
                         stroke="currentColor "
                         className="w-6 h-10"
                         onClick={() => handleShow(it)}
+                        title="Edytuj"
                       />
                     </label>
                     <input
@@ -143,40 +153,46 @@ function ListView() {
                       </div>
                     </div>
 
-                    <div className="btn btn-ghost btn-circle">
+                    <div className="btn btn-ghost btn-circle lg:flex-initial lg:w-30">
                       <TrashIcon
                         fill="none"
                         stroke="currentColor "
                         className=" w-6 h-10"
                         onClick={() => onDeleteProductClick(it)}
+                        title="Usuń"
                       />
                     </div>
                   </div>
                 ))}
             </div>
           </div>
-          <br />
-          <div>
+
+          <div className="lg:ml-80 lg:mr-80 lg:border-b-4 lg:border-r-4 lg:border-l-4 lg:rounded-b-xl lg:shadow-2xl lg:border-primary/10">
             <div>
-              <div className="uppercase text-white px-2 py-4 font-semibold bg-base-300">
+              <div className="uppercase lg:text-xl px-2 py-4 font-semibold lg:font-bold bg-base-300 lg:pl-9 lg:mb-1">
                 Kupione
               </div>
             </div>
-            <div className="flex flex-col">
+            <div className="flex flex-col lg:pb-3">
               {list.boughtItems.map((it) => (
-                <div className="flex flex-row space-x-4">
+                <div className="flex lg:flex-none flex-row space-x-4">
                   <div>
-                    <CheckCircleIcon className="mt-2 w-8 h-8 stroke-current " />
+                    <CheckCircleIcon className="mt-2 w-8 h-8 lg:ml-8 stroke-current " />
                   </div>
-                  <div className="w-full mt-3 ml-3">{it.product}</div>
-                  <div className="w-full mt-3">{it.quantity}</div>
-                  <div></div>
-                  <div className="btn btn-ghost btn-circle">
+                  <div className="lg:flex-initial w-full lg:w-60 mt-3 ml-3 lg:text-lg">
+                    {it.product}
+                  </div>
+                  <div className="lg:flex-initial w-full lg:w-40 mt-3 lg:text-lg">
+                    {it.quantity}
+                  </div>
+                  <div className="lg:flex-initial lg:w-12"></div>
+                  <div className="lg:flex-initial lg:w-30 btn btn-ghost btn-circle">
                     <TrashIcon
                       fill="none"
                       stroke="currentColor "
                       className=" w-6 h-10 "
                       onClick={() => onDeleteBoughtProductClick(it)}
+                      title="Usuń"
                     />
                   </div>
                 </div>

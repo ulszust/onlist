@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
-import { findListByNameOrProduct, getAllLists } from "./list-service";
+import { findListByNameOrProduct } from "./list-service";
 import { useNavigate } from "react-router-dom";
 function Search() {
   const [query, setQuery] = useState("");

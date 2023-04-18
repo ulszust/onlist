@@ -10,13 +10,17 @@ import React from "react";
 function Navbar() {
   return (
     <>
-      <div className=" mx-0 lg:mx-1 ">
-        <div className=" lg:rounded-lg navbar bg-neutral/70">
+      <div>
+        <div className=" navbar bg-neutral/70">
           <div className="navbar-start">
             <div className="hidden lg:dropdown">
-              <label tabIndex={0} className="btn btn-ghost btn-circle">
+              <label
+                tabIndex={0}
+                className="btn btn-ghost btn-circle"
+                title="Menu"
+              >
                 <Bars3BottomLeftIcon
-                  className="h-5 w-5"
+                  className=" w-5 lg:w-7"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -27,7 +31,7 @@ function Navbar() {
                 className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-neutral/90 rounded-box w-52"
               >
                 <li>
-                  <a href={"/"}>
+                  <a href={"/"} className="lg:text-lg">
                     <HomeIcon
                       className="h-5 w-5"
                       fill="none"
@@ -38,7 +42,7 @@ function Navbar() {
                   </a>
                 </li>
                 <li>
-                  <a href={"/"}>
+                  <a href={"/"} className="lg:text-lg">
                     <DocumentTextIcon
                       className="h-5 w-5"
                       fill="none"
@@ -49,7 +53,7 @@ function Navbar() {
                   </a>
                 </li>
                 <li>
-                  <a href={"/list"}>
+                  <a href={"/list"} className="lg:text-lg">
                     <PlusIcon
                       className="h-5 w-5"
                       fill="none"
@@ -60,7 +64,7 @@ function Navbar() {
                   </a>
                 </li>
                 <li>
-                  <a href={"/search"}>
+                  <a href={"/search"} className="lg:text-lg">
                     <MagnifyingGlassIcon
                       className="h-5 w-5"
                       fill="none"
@@ -73,8 +77,11 @@ function Navbar() {
               </ul>
             </div>
           </div>
-          <div className="navbar-center">
-            <a className="btn btn-ghost normal-case text-xl" href={"/"}>
+          <div className="navbar-center" title="Home">
+            <a
+              className="btn btn-ghost normal-case text-xl lg:text-4xl"
+              href={"/"}
+            >
               onLIST
             </a>
           </div>

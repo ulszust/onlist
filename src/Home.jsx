@@ -24,7 +24,7 @@ function Home() {
             <>
               <div
                 onClick={() => goToList(list.name)}
-                className="cursor-pointer hover:bg-primary/20 mx-7 lg:mx-20 grid h-16 card bg-base-300 rounded-box place-items-center font-bold uppercase "
+                className="cursor-pointer hover:bg-primary/20 mx-7 lg:mx-80 grid h-16 card bg-base-300 rounded-box place-items-center font-bold uppercase "
               >
                 {list.name}
               </div>

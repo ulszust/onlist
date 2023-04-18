@@ -85,10 +85,6 @@ export function removeBoughtItem(name, product) {
   currentList.boughtItems.splice(deleteBoughtItemIndex, 1);
 }
 
-export function getAllLists() {
-  return data;
-}
-
 export function findListByNameOrProduct(query) {
   const listsByName = data.filter((list) => list.name?.includes(query));
   const listsByProduct = data.filter((list) =>
