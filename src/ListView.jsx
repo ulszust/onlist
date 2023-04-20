@@ -14,6 +14,7 @@ import {
   CheckCircleIcon,
 } from "@heroicons/react/20/solid";
 import { PlusCircleIcon } from "@heroicons/react/24/solid";
+import { AddNewProducts } from "./AddNewProducts";
 
 function ListView() {
   const { id } = useParams();
@@ -24,8 +25,6 @@ function ListView() {
   const [modalData, setModalData] = useState({});
   const [updatedProduct, setUpdatedProduct] = useState(null);
   const [active, setActive] = useState(false);
-  const [product, setProduct] = useState("");
-  const [quantity, setQuantity] = useState("");
 
   const handleClick = () => {
     setActive(!active);
@@ -53,16 +52,10 @@ function ListView() {
     navigate(path);
   };
 
-  const addProduct = () => {
+  const addProduct = (product, quantity) => {
     addNewListItem(id, product, quantity);
     setCounter(counter + 1);
-    clearInput();
   };
-
-  function clearInput() {
-    document.getElementById("product").value = "";
-    document.getElementById("quantity").value = "";
-  }
 
   const onDeleteProductClick = ({ product }) => {
     removeListItem(id, product);
@@ -78,53 +71,18 @@ function ListView() {
     <>
       {loading || (
         <div>
-          <div className="uppercase font-semibold lg:font-extrabold mx-7 lg:mx-20 mb-2 lg:mb-10 lg:pb-1 lg:mt-5 lg:pt-1 lg:text-2xl lg:ml-96 lg:mr-96 lg:rounded-full lg:border-4 lg:border-primary/10 lg:shadow-2xl flex flex-row justify-center">
-            <div className="mt-4 ml-8 lg:px-3"> {id}</div>
-            <div
-              className={"lg:hidden"}
-              className="rounded-full lg:hover:rounded-lg lg:cursor-pointer lg:hover:bg-primary/20 lg:ml-3"
-              title="Dodaj produkty"
-            >
+          <div className="uppercase font-semibold lg:font-extrabold mx-7 lg:w-80 mb-2 lg:mb-8 lg:pb-1 lg:mt-5 lg:pt-1 lg:text-2xl lg:rounded-full lg:border-4 lg:border-primary/10 lg:shadow-2xl flex flex-row justify-center">
+            <div className="mt-4 ml-8 lg:ml-0 lg:mt-2 lg:px-3"> {id}</div>
+            <div className="lg:hidden rounded-full" title="Dodaj produkty">
               <PlusCircleIcon
-                className="w-12 lg:w-14 h-14 ml-2"
+                className="w-12 h-14 ml-2"
                 onClick={onAddNewProductClick}
                 title="Dodaj produkty"
               />
             </div>
           </div>
-          <div
-            // className={"sm:hidden"}
-            className="hidden lg:block w-50 mt-10 mx-3 mb-2 bg-neutral/50 shadow-xl"
-          >
-            <div className="card-body items-center text-center">
-              <div className="flex flex-col">
-                <div className="form-control">
-                  <div className="flex flex-col gap-y-3 pb-2">
-                    <input
-                      type="text"
-                      id="product"
-                      placeholder="Produkt..."
-                      className="input input-bordered"
-                      onChange={(event) => setProduct(event.target.value)}
-                    />
-
-                    <input
-                      type="text"
-                      id="quantity"
-                      placeholder="Ilość..."
-                      className="input input-bordered"
-                      onChange={(event) => setQuantity(event.target.value)}
-                    />
-                  </div>
-                  <button
-                    onClick={addProduct}
-                    className="btn btn-primary cursor-pointer mt-4 w-20 place-self-center"
-                  >
-                    Dodaj
-                  </button>
-                </div>
-              </div>
-            </div>
+          <div className="hidden lg:block">
+            <AddNewProducts addProduct={addProduct} />
           </div>
           <div className="lg:ml-80 lg:mr-80 lg:border-t-4 lg:border-r-4 lg:border-l-4 lg:rounded-t-xl lg:shadow-2xl lg:border-primary/10">
             <div className="flex flex-row bg-base-300 lg:rounded-t-xl">

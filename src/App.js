@@ -2,7 +2,7 @@ import "./App.css";
 import MobileMenu from "./MobileMenu";
 import Navbar from "./Navbar";
 import Home from "./Home";
-import AddProducts from "./AddProducts";
+import AddProductsView from "./AddProductsView";
 import Search from "./Search";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AddList from "./AddList";
@@ -19,7 +19,10 @@ function App() {
           <Route element={<Home />} exact path="/" />
           <Route element={<AddList />} path="/list" />
           <Route element={<Search />} path="/search" />
-          <Route element={<AddProducts />} path="/list/:name/add-products" />
+          <Route
+            element={<AddProductsView />}
+            path="/list/:name/add-products"
+          />
           <Route element={<ListView />} path="/list/:id" />
         </Routes>
       </Router>
