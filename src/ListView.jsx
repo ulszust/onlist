@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import {
   addBoughtItem,
+  addNewListItem,
   editListItem,
   getList,
   removeBoughtItem,
@@ -23,6 +24,8 @@ function ListView() {
   const [modalData, setModalData] = useState({});
   const [updatedProduct, setUpdatedProduct] = useState(null);
   const [active, setActive] = useState(false);
+  const [product, setProduct] = useState("");
+  const [quantity, setQuantity] = useState("");
 
   const handleClick = () => {
     setActive(!active);
@@ -50,6 +53,17 @@ function ListView() {
     navigate(path);
   };
 
+  const addProduct = () => {
+    addNewListItem(id, product, quantity);
+    setCounter(counter + 1);
+    clearInput();
+  };
+
+  function clearInput() {
+    document.getElementById("product").value = "";
+    document.getElementById("quantity").value = "";
+  }
+
   const onDeleteProductClick = ({ product }) => {
     removeListItem(id, product);
     setCounter(counter + 1);
@@ -67,6 +81,7 @@ function ListView() {
           <div className="uppercase font-semibold lg:font-extrabold mx-7 lg:mx-20 mb-2 lg:mb-10 lg:pb-1 lg:mt-5 lg:pt-1 lg:text-2xl lg:ml-96 lg:mr-96 lg:rounded-full lg:border-4 lg:border-primary/10 lg:shadow-2xl flex flex-row justify-center">
             <div className="mt-4 ml-8 lg:px-3"> {id}</div>
             <div
+              className={"lg:hidden"}
               className="rounded-full lg:hover:rounded-lg lg:cursor-pointer lg:hover:bg-primary/20 lg:ml-3"
               title="Dodaj produkty"
             >
@@ -75,6 +90,40 @@ function ListView() {
                 onClick={onAddNewProductClick}
                 title="Dodaj produkty"
               />
+            </div>
+          </div>
+          <div
+            // className={"sm:hidden"}
+            className="hidden lg:block w-50 mt-10 mx-3 mb-2 bg-neutral/50 shadow-xl"
+          >
+            <div className="card-body items-center text-center">
+              <div className="flex flex-col">
+                <div className="form-control">
+                  <div className="flex flex-col gap-y-3 pb-2">
+                    <input
+                      type="text"
+                      id="product"
+                      placeholder="Produkt..."
+                      className="input input-bordered"
+                      onChange={(event) => setProduct(event.target.value)}
+                    />
+
+                    <input
+                      type="text"
+                      id="quantity"
+                      placeholder="Ilość..."
+                      className="input input-bordered"
+                      onChange={(event) => setQuantity(event.target.value)}
+                    />
+                  </div>
+                  <button
+                    onClick={addProduct}
+                    className="btn btn-primary cursor-pointer mt-4 w-20 place-self-center"
+                  >
+                    Dodaj
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
           <div className="lg:ml-80 lg:mr-80 lg:border-t-4 lg:border-r-4 lg:border-l-4 lg:rounded-t-xl lg:shadow-2xl lg:border-primary/10">
