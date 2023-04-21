@@ -3,6 +3,7 @@ import { addNewListItem, getList } from "./list-service";
 import { useParams } from "react-router-dom";
 import { CheckIcon } from "@heroicons/react/20/solid";
 import { AddNewProducts } from "./AddNewProducts";
+import { ProductsOnTheList } from "./ProductsOnTheList";
 
 function AddProductsView() {
   const { name } = useParams();
@@ -33,22 +34,16 @@ function AddProductsView() {
         <>
           <AddNewProducts addProduct={addProduct} />
           <div className="uppercase font-semibold mx-7 mb-2 mt-5 lg:mx-20 flex flex-row justify-center">
-            <div className="mt-4 bg-success p-2 px-5 rounded-md text-white">
+            <div className="mt-4 bg-success p-2 px-5 rounded-md text-white font-bold">
               {name}
             </div>
           </div>
-          <div className="flex flex-col">
+          <div className="mt-8 flex flex-col items-center justify-center">
             {isFound(true) ? (
               <>
-                {list.items.map((it) => (
-                  <div className="flex flex-row space-x-3">
-                    <div>
-                      <CheckIcon className="mt-4 w-7 h-5" />
-                    </div>
-                    <div className=" mt-3">{it.product}</div>
-                    <div className="mt-3">{it.quantity}</div>
-                  </div>
-                ))}
+                <div className="border px-3 pt-1 pb-3 border-primary/10 border-4 rounded-xl shadow-xl">
+                  <ProductsOnTheList list={list} />
+                </div>
               </>
             ) : (
               <div className="place-self-center mt-10 font-bold">

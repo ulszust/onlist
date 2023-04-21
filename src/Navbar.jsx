@@ -79,7 +79,7 @@ function Navbar() {
           </div>
           <div className="navbar-center" title="Home">
             <a
-              className="btn btn-ghost normal-case text-xl lg:text-4xl"
+              className="btn btn-ghost normal-case text-3xl font-bold lg:text-4xl lg:font-extrabold"
               href={"/"}
             >
               onLIST

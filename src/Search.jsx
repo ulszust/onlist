@@ -29,7 +29,7 @@ function Search() {
             <input
               type="text"
               placeholder="Szukaj listy..."
-              className="input input-bordered"
+              className="input input-bordered text-xl"
               onChange={(e) => setQuery(e.target.value?.toLowerCase())}
             />
             <div className="btn btn-square bg-success border-success">
@@ -44,7 +44,7 @@ function Search() {
             <div className=" mx-3 border-2 border-success/50 rounded-lg mt-7">
               <div
                 onClick={() => goToList(list.name)}
-                className="pl-3 bg-success/80 font-bold text-white/70"
+                className="pl-3 bg-success/80 font-extrabold text-white/70 text-lg"
               >
                 {list.name}
               </div>

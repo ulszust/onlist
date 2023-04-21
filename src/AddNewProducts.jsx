@@ -39,7 +39,7 @@ export const AddNewProducts = ({ addProduct }) => {
               </div>
               <button
                 onClick={onAddProductClick}
-                className="btn btn-primary cursor-pointer mt-4 w-20 place-self-center"
+                className="btn btn-primary cursor-pointer mt-4 w-20 place-self-center font-bold"
               >
                 Dodaj
               </button>

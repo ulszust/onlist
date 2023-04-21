@@ -23,10 +23,13 @@ function AddList() {
             onChange={(e) => setName(e.target.value)}
             type="text"
             placeholder="Nazwa listy..."
-            className="input input-bordered w-full max-w-xs"
+            className="input input-bordered w-full max-w-xs text-lg"
           />
           <div className=" mt-3 pt-2 card-actions">
-            <button onClick={addList} className="btn btn-primary">
+            <button
+              onClick={addList}
+              className="btn btn-primary font-bold text-lg"
+            >
               Zapisz
             </button>
           </div>

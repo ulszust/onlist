@@ -72,7 +72,10 @@ function ListView() {
       {loading || (
         <div>
           <div className="uppercase font-semibold lg:font-extrabold mx-7 lg:w-80 mb-2 lg:mb-8 lg:pb-1 lg:mt-5 lg:pt-1 lg:text-2xl lg:rounded-full lg:border-4 lg:border-primary/10 lg:shadow-2xl flex flex-row justify-center">
-            <div className="mt-4 ml-8 lg:ml-0 lg:mt-2 lg:px-3"> {id}</div>
+            <div className="mt-4 ml-8 lg:ml-0 lg:mt-2 lg:px-3 font-extrabold text-xl">
+              {" "}
+              {id}
+            </div>
             <div className="lg:hidden rounded-full" title="Dodaj produkty">
               <PlusCircleIcon
                 className="w-12 h-14 ml-2"
@@ -86,7 +89,7 @@ function ListView() {
           </div>
           <div className="lg:ml-80 lg:mr-80 lg:border-t-4 lg:border-r-4 lg:border-l-4 lg:rounded-t-xl lg:shadow-2xl lg:border-primary/10">
             <div className="flex flex-row bg-base-300 lg:rounded-t-xl">
-              <div className="uppercase font-semibold lg:font-bold lg:text-xl px-2 py-4 lg:pl-9 lg:mb-1">
+              <div className="uppercase font-semibold text-lg lg:font-bold lg:text-xl px-2 py-4 lg:pl-9 lg:mb-1">
                 Do kupienia
               </div>
             </div>
@@ -176,7 +179,7 @@ function ListView() {
 
           <div className="lg:ml-80 lg:mr-80 lg:border-b-4 lg:border-r-4 lg:border-l-4 lg:rounded-b-xl lg:shadow-2xl lg:border-primary/10">
             <div>
-              <div className="uppercase lg:text-xl px-2 py-4 font-semibold lg:font-bold bg-base-300 lg:pl-9 lg:mb-1">
+              <div className="uppercase text-lg lg:text-xl px-2 py-4 font-semibold lg:font-bold bg-base-300 lg:pl-9 lg:mb-1">
                 Kupione
               </div>
             </div>
