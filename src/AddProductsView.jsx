@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { addNewListItem, getList } from "./list-service";
 import { useParams } from "react-router-dom";
-import { CheckIcon } from "@heroicons/react/20/solid";
 import { AddNewProducts } from "./AddNewProducts";
 import { ProductsOnTheList } from "./ProductsOnTheList";
 

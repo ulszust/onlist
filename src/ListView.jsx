@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import {
   addBoughtItem,
@@ -9,12 +9,13 @@ import {
   removeListItem,
 } from "./list-service";
 import {
+  CheckCircleIcon,
   PencilIcon,
   TrashIcon,
-  CheckCircleIcon,
 } from "@heroicons/react/20/solid";
 import { PlusCircleIcon } from "@heroicons/react/24/solid";
 import { AddNewProducts } from "./AddNewProducts";
+import { EditProductModal } from "./EditProductModal";
 
 function ListView() {
   const { id } = useParams();
@@ -23,13 +24,8 @@ function ListView() {
   const [counter, setCounter] = useState(0);
   const navigate = useNavigate();
   const [modalData, setModalData] = useState({});
-  const [updatedProduct, setUpdatedProduct] = useState(null);
-  const [active, setActive] = useState(false);
-  const [showModal, setShowModal] = useState(false);
 
-  const handleClick = () => {
-    setActive(!active);
-  };
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     setLoading(true);
@@ -42,8 +38,9 @@ function ListView() {
     setShowModal(true);
   };
 
-  const onCloseModalClick = (item) => {
+  const onCloseModalClick = (updatedProduct, updatedQuantity) => {
     setShowModal(false);
+    editListItem(id, modalData.product, updatedProduct, updatedQuantity);
   };
 
   const boughtProduct = ({ product }) => {
@@ -79,7 +76,6 @@ function ListView() {
         <div>
           <div className="uppercase font-semibold lg:font-extrabold mx-7 lg:w-80 mb-2 lg:mb-8 lg:pb-1 lg:mt-5 lg:pt-1 lg:text-2xl lg:rounded-full lg:border-4 lg:border-primary/10 lg:shadow-2xl flex flex-row justify-center">
             <div className="mt-4 ml-8 lg:ml-0 lg:mt-2 lg:px-3 font-extrabold text-xl">
-              {" "}
               {id}
             </div>
             <div className="lg:hidden rounded-full" title="Dodaj produkty">
@@ -104,10 +100,7 @@ function ListView() {
                 .map((it) => ({ ...it, clicked: false }))
                 .map((it) => (
                   <div className="flex flex-row lg:flex-none space-x-4">
-                    <button
-                      className="lg:ml-8 cursor-pointer active:text-white"
-                      onClick={handleClick}
-                    >
+                    <button className="lg:ml-8 cursor-pointer active:text-white">
                       <CheckCircleIcon
                         className="w-8 h-8 fill-none stroke-current "
                         onClick={() => boughtProduct(it)}
@@ -129,48 +122,12 @@ function ListView() {
                         title="Edytuj"
                       />
                     </div>
-                    {showModal ? (
-                      <>
-                        <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none !ml-0 ">
-                          <div className="border-8 border-primary/30 rounded-lg bg-base-100 shadow-xl">
-                            <div className="flex flex-row space-x-3">
-                              <div className="flex flex-col space-y-12 ">
-                                <div className="mt-12 ml-2 uppercase font-bold">
-                                  Produkt
-                                </div>
-                                <div className=" ml-8 uppercase font-bold">
-                                  Ilość
-                                </div>
-                              </div>
-                              <div className="flex flex-col space-y-6">
-                                <div>
-                                  <input
-                                    type="text"
-                                    value={modalData.product}
-                                    className="input input-bordered mt-9 mr-2"
-                                  />
-                                </div>
-                                <div>
-                                  <input
-                                    type="text"
-                                    value={modalData.quantity}
-                                    className="input input-bordered mr-2"
-                                  />
-                                </div>
-                              </div>
-                            </div>
-                            <div>
-                              <div
-                                onClick={() => onCloseModalClick(it)}
-                                className="btn text-center font-bold text-neutral border-primary bg-primary mt-8 flex justify-center mr-28 ml-32 mb-7"
-                              >
-                                Zapisz
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </>
-                    ) : null}
+                    <EditProductModal
+                      item={modalData}
+                      showModal={showModal}
+                      onSaveClicked={onCloseModalClick}
+                      onModalClosed={() => setShowModal(false)}
+                    />
 
                     <div className="btn btn-ghost btn-circle lg:flex-initial lg:w-30">
                       <TrashIcon

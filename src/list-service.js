@@ -59,12 +59,15 @@ export function removeListItem(name, product) {
   currentList.items.splice(deleteItemIndex, 1);
 }
 
-export function editListItem(name, product, updatedProduct, quantity) {
+export function editListItem(name, product, updatedProduct, updatedQuantity) {
   const currentList = data.find((it) => it.name === name);
   const toUpdateIndex = currentList.items.findIndex(
     (it) => it.product === product
   );
-  currentList.items.splice(toUpdateIndex, 1, { updatedProduct, quantity });
+  currentList.items.splice(toUpdateIndex, 1, {
+    product: updatedProduct,
+    quantity: updatedQuantity,
+  });
 }
 
 export function addBoughtItem(name, product) {

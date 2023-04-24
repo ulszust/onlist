@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { CheckIcon } from "@heroicons/react/20/solid";
-import { getList } from "./list-service";
-import { useParams } from "react-router-dom";
 
 export const ProductsOnTheList = ({ list }) => {
   return (
