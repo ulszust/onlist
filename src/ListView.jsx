@@ -74,11 +74,11 @@ function ListView() {
     <>
       {loading || (
         <div>
-          <div className="uppercase font-semibold lg:font-extrabold mx-7 lg:w-80 mb-2 lg:mb-8 lg:pb-1 lg:mt-5 lg:pt-1 lg:text-2xl lg:rounded-full lg:border-4 lg:border-primary/10 lg:shadow-2xl flex flex-row justify-center">
-            <div className="mt-4 ml-8 lg:ml-0 lg:mt-2 lg:px-3 font-extrabold text-xl">
+          <div className="uppercase lg:bg-base-300 mx-7 lg:mx-auto lg:w-96 mb-2 lg:mb-8 lg:pb-1 lg:mt-5 lg:pt-1 lg:rounded-box lg:shadow-2xl flex flex-row justify-center">
+            <div className="mt-4 ml-8 lg:mx-auto lg:pb-3 font-extrabold text-2xl lg:text-2xl">
               {id}
             </div>
-            <div className="lg:hidden rounded-full" title="Dodaj produkty">
+            <div className="lg:hidden rounded-full">
               <PlusCircleIcon
                 className="w-12 h-14 ml-2"
                 onClick={onAddNewProductClick}
@@ -89,7 +89,7 @@ function ListView() {
           <div className="hidden lg:block">
             <AddNewProducts addProduct={addProduct} />
           </div>
-          <div className="lg:ml-80 lg:mr-80 lg:border-t-4 lg:border-r-4 lg:border-l-4 lg:rounded-t-xl lg:shadow-2xl lg:border-primary/10">
+          <div className="lg:ml-96 lg:mr-96 lg:border-t-4 lg:border-r-4 lg:border-l-4 lg:rounded-t-xl lg:shadow-2xl lg:border-primary/10">
             <div className="flex flex-row bg-base-300 lg:rounded-t-xl">
               <div className="uppercase font-semibold text-lg lg:font-bold lg:text-xl px-2 py-4 lg:pl-9 lg:mb-1">
                 Do kupienia
@@ -99,15 +99,15 @@ function ListView() {
               {list.items
                 .map((it) => ({ ...it, clicked: false }))
                 .map((it) => (
-                  <div className="flex flex-row lg:flex-none space-x-4">
-                    <button className="lg:ml-8 cursor-pointer active:text-white">
+                  <div className="flex flex-row lg:flex-none space-x-4 lg:space-x-0">
+                    <button className="lg:ml-2 cursor-pointer">
                       <CheckCircleIcon
                         className="w-8 h-8 fill-none stroke-current "
                         onClick={() => boughtProduct(it)}
                         title="Kupione"
                       />
                     </button>
-                    <div className="lg:flex-initial w-full lg:w-60 mt-3 lg:text-lg">
+                    <div className="lg:flex-initial w-full lg:w-60 lg:pl-2 mt-3 lg:text-lg">
                       {it.product}
                     </div>
                     <div className="lg:flex-initial w-full lg:w-40 mt-3 lg:text-lg">
@@ -143,7 +143,7 @@ function ListView() {
             </div>
           </div>
 
-          <div className="lg:ml-80 lg:mr-80 lg:border-b-4 lg:border-r-4 lg:border-l-4 lg:rounded-b-xl lg:shadow-2xl lg:border-primary/10">
+          <div className="lg:ml-96 lg:mr-96 lg:border-b-4 lg:border-r-4 lg:border-l-4 lg:rounded-b-xl lg:shadow-2xl lg:border-primary/10">
             <div>
               <div className="uppercase text-lg lg:text-xl px-2 py-4 font-semibold lg:font-bold bg-base-300 lg:pl-9 lg:mb-1">
                 Kupione
@@ -151,11 +151,11 @@ function ListView() {
             </div>
             <div className="flex flex-col lg:pb-3">
               {list.boughtItems.map((it) => (
-                <div className="flex lg:flex-none flex-row space-x-4">
+                <div className="flex lg:flex-none flex-row space-x-4 lg:space-x-0">
                   <div>
-                    <CheckCircleIcon className="mt-2 w-8 h-8 lg:ml-8 stroke-current " />
+                    <CheckCircleIcon className="mt-2 w-8 h-8 lg:ml-2 stroke-current " />
                   </div>
-                  <div className="lg:flex-initial w-full lg:w-60 mt-3 ml-3 lg:text-lg">
+                  <div className="lg:flex-initial w-full lg:w-60 mt-3 ml-3 lg:pl-2 lg:text-lg">
                     {it.product}
                   </div>
                   <div className="lg:flex-initial w-full lg:w-40 mt-3 lg:text-lg">

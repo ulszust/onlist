@@ -16,7 +16,7 @@ export const AddNewProducts = ({ addProduct }) => {
 
   return (
     <>
-      <div className="card w-50 mt-10 mx-3 mb-2 bg-neutral/50 shadow-xl">
+      <div className="card w-50 lg:w-fit lg:mx-auto mt-10 lg:mt-1 mx-3 mb-2 lg:mb-7 bg-neutral/50 shadow-xl">
         <div className="card-body items-center text-center">
           <div className="flex flex-col">
             <div className="form-control">
@@ -39,7 +39,7 @@ export const AddNewProducts = ({ addProduct }) => {
               </div>
               <button
                 onClick={onAddProductClick}
-                className="btn btn-primary cursor-pointer mt-4 w-20 place-self-center font-bold"
+                className="btn btn-primary cursor-pointer mt-4 w-20 place-self-center font-bold lg:text-lg"
               >
                 Dodaj
               </button>
