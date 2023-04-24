@@ -25,6 +25,7 @@ function ListView() {
   const [modalData, setModalData] = useState({});
   const [updatedProduct, setUpdatedProduct] = useState(null);
   const [active, setActive] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   const handleClick = () => {
     setActive(!active);
@@ -36,8 +37,13 @@ function ListView() {
     setLoading(false);
   }, [id, counter]);
 
-  const handleShow = (item) => {
+  const onShowModalClick = (item) => {
     setModalData(item);
+    setShowModal(true);
+  };
+
+  const onCloseModalClick = (item) => {
+    setShowModal(false);
   };
 
   const boughtProduct = ({ product }) => {
@@ -114,54 +120,57 @@ function ListView() {
                     <div className="lg:flex-initial w-full lg:w-40 mt-3 lg:text-lg">
                       {it.quantity}
                     </div>
-                    <label
-                      htmlFor="edit-modal"
-                      className="btn btn-ghost btn-circle lg:flex-initial lg:w-30"
-                    >
+                    <div className="btn btn-ghost btn-circle lg:flex-initial lg:w-30">
                       <PencilIcon
                         fill="none"
                         stroke="currentColor "
                         className="w-6 h-10"
-                        onClick={() => handleShow(it)}
+                        onClick={() => onShowModalClick(it)}
                         title="Edytuj"
                       />
-                    </label>
-                    <input
-                      type="checkbox"
-                      id="edit-modal"
-                      className="modal-toggle"
-                    />
-                    <div className="modal !ml-0">
-                      <div className="modal-box">
-                        <div className="flex flex-row space-x-3 ">
-                          <div className="flex flex-col space-y-12">
-                            <div className="mt-3 uppercase">Produkt</div>
-                            <div className="ml-6 uppercase">Ilość</div>
-                          </div>
-                          <div className="flex flex-col space-y-6">
-                            <div>
-                              <input
-                                type="text"
-                                value={modalData.product}
-                                className="input input-bordered w-full max-w-xs"
-                              />
-                            </div>
-                            <div>
-                              <input
-                                type="text"
-                                value={modalData.quantity}
-                                className="input input-bordered w-full max-w-xs"
-                              />
-                            </div>
-                          </div>
-                        </div>
-                        <div className="modal-action">
-                          <label htmlFor="edit-modal" className="btn">
-                            Zapisz
-                          </label>
-                        </div>
-                      </div>
                     </div>
+                    {showModal ? (
+                      <>
+                        <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none !ml-0 ">
+                          <div className="border-8 border-primary/30 rounded-lg bg-base-100 shadow-xl">
+                            <div className="flex flex-row space-x-3">
+                              <div className="flex flex-col space-y-12 ">
+                                <div className="mt-12 ml-2 uppercase font-bold">
+                                  Produkt
+                                </div>
+                                <div className=" ml-8 uppercase font-bold">
+                                  Ilość
+                                </div>
+                              </div>
+                              <div className="flex flex-col space-y-6">
+                                <div>
+                                  <input
+                                    type="text"
+                                    value={modalData.product}
+                                    className="input input-bordered mt-9 mr-2"
+                                  />
+                                </div>
+                                <div>
+                                  <input
+                                    type="text"
+                                    value={modalData.quantity}
+                                    className="input input-bordered mr-2"
+                                  />
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              <div
+                                onClick={() => onCloseModalClick(it)}
+                                className="btn text-center font-bold text-neutral border-primary bg-primary mt-8 flex justify-center mr-28 ml-32 mb-7"
+                              >
+                                Zapisz
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </>
+                    ) : null}
 
                     <div className="btn btn-ghost btn-circle lg:flex-initial lg:w-30">
                       <TrashIcon
