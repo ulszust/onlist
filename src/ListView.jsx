@@ -89,9 +89,9 @@ function ListView() {
           <div className="hidden lg:block">
             <AddNewProducts addProduct={addProduct} />
           </div>
-          <div className="lg:ml-96 lg:mr-96 lg:border-t-4 lg:border-r-4 lg:border-l-4 lg:rounded-t-xl lg:shadow-2xl lg:border-primary/10">
+          <div className="lg:mx-96 lg:border-t-4 lg:border-x-4 lg:rounded-t-xl lg:shadow-2xl lg:border-primary/10">
             <div className="flex flex-row bg-base-300 lg:rounded-t-xl">
-              <div className="uppercase font-semibold text-lg lg:font-bold lg:text-xl px-2 py-4 lg:pl-9 lg:mb-1">
+              <div className="uppercase font-semibold text-lg lg:text-xl lg:font-bold px-2 py-4 lg:pl-9 lg:mb-1">
                 Do kupienia
               </div>
             </div>
@@ -99,21 +99,21 @@ function ListView() {
               {list.items
                 .map((it) => ({ ...it, clicked: false }))
                 .map((it) => (
-                  <div className="flex flex-row lg:flex-none space-x-4 lg:space-x-0">
-                    <button className="lg:ml-2 cursor-pointer">
+                  <div className="flex flex-row space-x-0">
+                    <div className="ml-2 cursor-pointer">
                       <CheckCircleIcon
-                        className="w-8 h-8 fill-none stroke-current "
+                        className="w-8 h-8 mt-2 fill-none stroke-current "
                         onClick={() => boughtProduct(it)}
                         title="Kupione"
                       />
-                    </button>
-                    <div className="lg:flex-initial w-full lg:w-60 lg:pl-2 mt-3 lg:text-lg">
+                    </div>
+                    <div className="w-40 lg:w-60 lg:pr-7 pl-2 mt-3 lg:text-lg break-all">
                       {it.product}
                     </div>
-                    <div className="lg:flex-initial w-full lg:w-40 mt-3 lg:text-lg">
+                    <div className="w-20 lg:w-32 lg:pr-7 mt-3 lg:text-lg break-all">
                       {it.quantity}
                     </div>
-                    <div className="btn btn-ghost btn-circle lg:flex-initial lg:w-30">
+                    <div className="btn btn-ghost btn-circle w-16 lg:w-12">
                       <PencilIcon
                         fill="none"
                         stroke="currentColor "
@@ -129,7 +129,7 @@ function ListView() {
                       onModalClosed={() => setShowModal(false)}
                     />
 
-                    <div className="btn btn-ghost btn-circle lg:flex-initial lg:w-30">
+                    <div className="btn btn-ghost btn-circle w-12 lg:w-30">
                       <TrashIcon
                         fill="none"
                         stroke="currentColor "
@@ -143,26 +143,26 @@ function ListView() {
             </div>
           </div>
 
-          <div className="lg:ml-96 lg:mr-96 lg:border-b-4 lg:border-r-4 lg:border-l-4 lg:rounded-b-xl lg:shadow-2xl lg:border-primary/10">
+          <div className="lg:mx-96 lg:border-b-4 lg:border-x-4 lg:rounded-b-xl lg:shadow-2xl lg:border-primary/10">
             <div>
-              <div className="uppercase text-lg lg:text-xl px-2 py-4 font-semibold lg:font-bold bg-base-300 lg:pl-9 lg:mb-1">
+              <div className="uppercase text-lg lg:text-xl px-2 py-4 lg:pl-9 lg:mb-1 font-semibold lg:font-bold bg-base-300 ">
                 Kupione
               </div>
             </div>
             <div className="flex flex-col lg:pb-3">
               {list.boughtItems.map((it) => (
-                <div className="flex lg:flex-none flex-row space-x-4 lg:space-x-0">
-                  <div>
-                    <CheckCircleIcon className="mt-2 w-8 h-8 lg:ml-2 stroke-current " />
+                <div className="flex  flex-row space-x-0">
+                  <div className="ml-2">
+                    <CheckCircleIcon className="mt-2 w-8 h-8 stroke-current " />
                   </div>
-                  <div className="lg:flex-initial w-full lg:w-60 mt-3 ml-3 lg:pl-2 lg:text-lg">
+                  <div className="w-40 lg:w-60 mt-3 ml-3 pl-2 lg:pr-7 lg:text-lg break-words">
                     {it.product}
                   </div>
-                  <div className="lg:flex-initial w-full lg:w-40 mt-3 lg:text-lg">
+                  <div className="w-24 lg:w-32 mt-3 lg:pr-7 lg:text-lg break-words ">
                     {it.quantity}
                   </div>
-                  <div className="lg:flex-initial lg:w-12"></div>
-                  <div className="lg:flex-initial lg:w-30 btn btn-ghost btn-circle">
+                  <div className="w-16 lg:w-12"></div>
+                  <div className="w-12 lg:w-30 btn btn-ghost btn-circle">
                     <TrashIcon
                       fill="none"
                       stroke="currentColor "
