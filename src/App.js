@@ -9,24 +9,26 @@ import AddList from "./AddList";
 import ListView from "./ListView";
 function App() {
   return (
-    <>
+    <div className="flex flex-col min-h-screen w-full">
       <Navbar />
-      <div className={"sm:hidden"}>
+      <div className="flex-grow">
+        <div className="pb-[100px]">
+          <Router>
+            <Routes>
+              <Route element={<Home />} exact path="/" />
+              <Route element={<AddList />} path="/list" />
+              <Route element={<Search />} path="/search" />
+              <Route
+                element={<AddProductsView />}
+                path="/list/:name/add-products"
+              />
+              <Route element={<ListView />} path="/list/:id" />
+            </Routes>
+          </Router>
+        </div>
         <MobileMenu></MobileMenu>
       </div>
-      <Router>
-        <Routes>
-          <Route element={<Home />} exact path="/" />
-          <Route element={<AddList />} path="/list" />
-          <Route element={<Search />} path="/search" />
-          <Route
-            element={<AddProductsView />}
-            path="/list/:name/add-products"
-          />
-          <Route element={<ListView />} path="/list/:id" />
-        </Routes>
-      </Router>
-    </>
+    </div>
   );
 }
 

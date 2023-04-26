@@ -33,11 +33,11 @@ function AddProductsView() {
         <>
           <AddNewProducts addProduct={addProduct} />
           <div className="uppercase font-semibold mx-7 mb-2 mt-5 lg:mx-20 flex flex-row justify-center">
-            <div className="mt-4 bg-success p-2 px-5 rounded-md text-white font-bold">
+            <div className="mt-2 bg-success p-2 px-5 rounded-md text-white font-bold">
               {name}
             </div>
           </div>
-          <div className="mt-8 flex flex-col items-center justify-center">
+          <div className="mt-6 flex flex-col items-center justify-center">
             {isFound(true) ? (
               <>
                 <div className="border px-3 pt-1 pb-3 border-primary/10 border-4 rounded-xl shadow-xl">

@@ -10,7 +10,7 @@ import React from "react";
 function Navbar() {
   return (
     <>
-      <div>
+      <div className="flex-none w-full">
         <div className=" navbar bg-neutral/70">
           <div className="navbar-start">
             <div className="hidden lg:dropdown">

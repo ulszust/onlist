@@ -9,8 +9,8 @@ export const ProductsOnTheList = ({ list }) => {
           <div>
             <CheckIcon className="mt-4 h-5" />
           </div>
-          <div className=" mt-3">{it.product}</div>
-          <div className="mt-3">{it.quantity}</div>
+          <div className=" mt-3 break-all w-20">{it.product}</div>
+          <div className="mt-3 break-all w-20">{it.quantity}</div>
         </div>
       ))}
     </>
