@@ -5,13 +5,17 @@ export const AddNewProducts = ({ addProduct }) => {
   const [quantity, setQuantity] = useState("");
 
   function onAddProductClick() {
-    addProduct(product, quantity);
-    clearInput();
+    if (product === "") {
+      window.alert("Musisz uzupełnić produkt :)");
+    } else {
+      addProduct(product, quantity);
+      clearInput();
+    }
   }
 
   function clearInput() {
-    document.getElementById("product").value = "";
-    document.getElementById("quantity").value = "";
+    setProduct("");
+    setQuantity("");
   }
 
   return (
@@ -26,6 +30,7 @@ export const AddNewProducts = ({ addProduct }) => {
                   id="product"
                   placeholder="Produkt..."
                   className="input input-bordered"
+                  value={product}
                   onChange={(event) => setProduct(event.target.value)}
                 />
 
@@ -34,6 +39,7 @@ export const AddNewProducts = ({ addProduct }) => {
                   id="quantity"
                   placeholder="Ilość..."
                   className="input input-bordered"
+                  value={quantity}
                   onChange={(event) => setQuantity(event.target.value)}
                 />
               </div>

@@ -5,7 +5,7 @@ import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
 function MobileMenu() {
   return (
     <>
-      <footer className="footer bg-base-100 pt-5 fixed bottom-0">
+      <footer className=" sm:hidden footer bg-base-100 pt-5 fixed bottom-0">
         <div className="flex justify-center text-center w-full mb-4 z-50">
           <ul className="menu menu-horizontal bg-base-100 rounded-box border-4 rounded-lg border-primary grid-cols-3 gap-4 w-fit pl-5 pr-5">
             <li>

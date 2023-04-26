@@ -99,7 +99,7 @@ function ListView() {
               {list.items
                 .map((it) => ({ ...it, clicked: false }))
                 .map((it) => (
-                  <div className="flex flex-row space-x-0">
+                  <div className="flex flex-row">
                     <div className="ml-2 cursor-pointer">
                       <CheckCircleIcon
                         className="w-8 h-8 mt-2 fill-none stroke-current "
