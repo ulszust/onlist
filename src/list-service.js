@@ -6,8 +6,8 @@ const data = [
       { product: "mleko", quantity: "500ml" },
     ],
     boughtItems: [
-      { product: "pep", quantity: "3" },
-      { product: "wincyj pepów", quantity: "78463" },
+      { product: "chusteczki", quantity: "3" },
+      { product: "herbata", quantity: "78463" },
     ],
   },
   {
@@ -16,7 +16,7 @@ const data = [
       { product: "chleb", quantity: "2" },
       { product: "parówki", quantity: "3" },
     ],
-    boughtItems: [{ product: "klamoty", quantity: "big" }],
+    boughtItems: [{ product: "ser", quantity: "5" }],
   },
 ];
 

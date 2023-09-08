@@ -47,7 +47,7 @@ function ListView() {
     setTimeout(() => {
       addBoughtItem(id, product);
       setCounter(counter + 1);
-    }, 1000);
+    });
   };
 
   const onAddNewProductClick = () => {
