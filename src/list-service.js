@@ -6,8 +6,8 @@ const data = [
       { product: "mleko", quantity: "500ml" },
     ],
     boughtItems: [
-      { product: "pep", quantity: "3" },
-      { product: "wincyj pepów", quantity: "78463" },
+      { product: "chusteczki", quantity: "3" },
+      { product: "herbata", quantity: "78463" },
     ],
   },
   {
@@ -16,7 +16,7 @@ const data = [
       { product: "chleb", quantity: "2" },
       { product: "parówki", quantity: "3" },
     ],
-    boughtItems: [{ product: "klamoty", quantity: "big" }],
+    boughtItems: [{ product: "ser", quantity: "5" }],
   },
 ];
 
@@ -59,12 +59,15 @@ export function removeListItem(name, product) {
   currentList.items.splice(deleteItemIndex, 1);
 }
 
-export function editListItem(name, product, updatedProduct, quantity) {
+export function editListItem(name, product, updatedProduct, updatedQuantity) {
   const currentList = data.find((it) => it.name === name);
   const toUpdateIndex = currentList.items.findIndex(
     (it) => it.product === product
   );
-  currentList.items.splice(toUpdateIndex, 1, { updatedProduct, quantity });
+  currentList.items.splice(toUpdateIndex, 1, {
+    product: updatedProduct,
+    quantity: updatedQuantity,
+  });
 }
 
 export function addBoughtItem(name, product) {
@@ -83,10 +86,6 @@ export function removeBoughtItem(name, product) {
     (it) => it.product === product
   );
   currentList.boughtItems.splice(deleteBoughtItemIndex, 1);
-}
-
-export function getAllLists() {
-  return data;
 }
 
 export function findListByNameOrProduct(query) {

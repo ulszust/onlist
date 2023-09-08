@@ -17,16 +17,19 @@ function AddList() {
   };
   return (
     <>
-      <div className="card card w-50 mt-52 mx-3 mb-2 pt-3 pb-3 bg-neutral/50 shadow-xl">
+      <div className="card card w-50 lg:w-fit mt-52 lg:mt-20 lg:px-16 mx-3 lg:mx-auto mb-2 pt-3 pb-3 bg-neutral/50 shadow-xl">
         <div className="card-body items-center text-center">
           <input
             onChange={(e) => setName(e.target.value)}
             type="text"
             placeholder="Nazwa listy..."
-            className="input input-bordered w-full max-w-xs"
+            className="input input-bordered w-full max-w-xs text-lg"
           />
           <div className=" mt-3 pt-2 card-actions">
-            <button onClick={addList} className="btn btn-primary">
+            <button
+              onClick={addList}
+              className="btn btn-primary font-bold text-lg"
+            >
               Zapisz
             </button>
           </div>
