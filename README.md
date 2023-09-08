@@ -32,7 +32,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 
 
-## Application view
+## Application preview
 ![Zrzut ekranu mojalista1](https://github.com/ulszust/onlist/assets/109608357/4d76d006-83b1-4bda-b7dd-386a5b4c8310)
 ![Zrzut ekranu mojalista4](https://github.com/ulszust/onlist/assets/109608357/1078a9dd-6ef2-4ea2-9363-531c86fabbba)
 ![Zrzut ekranu mojalista2](https://github.com/ulszust/onlist/assets/109608357/f7be17c6-4a58-433f-9bde-17da13fc10a1)
